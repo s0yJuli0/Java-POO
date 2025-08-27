@@ -1,0 +1,49 @@
+/* Clase "Pin" */
+
+package control_sistem_of_robotic_workshop;
+/**
+ *
+ * @author LENOVO
+ */
+public class Pin {
+    //Atributos
+    private int numero;
+    private String modo;
+    private Componente componente;
+    private String microcontroladorAsociado;
+    //Métodos
+    public void pinMode(String modo){
+        if("INPUT".equals(modo) || "OUTPUT".equals(modo)){
+            this.modo = modo;
+        }else{
+            System.out.println("Advertencia: Error al configurar el PIN "+ numero+" del "+microcontroladorAsociado);
+        }   
+    }
+    public void conectarComponente(Componente c){
+        setComponente(c);
+        System.out.println("-> Componente "+c.getNombre()+" conectado al PIN "+numero+" del "+microcontroladorAsociado);
+    }
+    //Constructor
+    public Pin(int numero, String nombreMicrocontrolador){
+        this.numero=numero;
+        this.microcontroladorAsociado=nombreMicrocontrolador;
+        componente = null;
+    }
+    //Geters
+    public int getNumero(){
+        return numero;
+    }
+    public String getModo(){
+        return modo;
+    }
+    public Componente getComponente(){
+        return componente;
+    }
+    public String getMicrocontroladorAsociado(){
+        return microcontroladorAsociado;
+    }
+    //Seters
+    public void setComponente(Componente c){
+        this.componente = c;
+    }
+}
