@@ -1,0 +1,60 @@
+/* Clase "Microcontrolador" */
+
+package control_sistem_of_robotic_workshop;
+/**
+ *
+ * @author LENOVO
+ */
+public class Microcontrolador {
+    //Atributos
+    private String nombreMicro;
+    private boolean estaEncendido;
+    private Pin pines[100];    
+    int ContadorPines=0;
+    //Métodos
+    void encender(){
+        estaEncendido = true;
+    }
+    void apagar(){
+        estaEncendido = false;  
+    }
+    void agregarPin(Pin p){
+        pines[ContadorPines]=p;
+        ContadorPines++;
+    }
+    void mostrarEstadoPines(){
+        System.out.println("Estado de pines del "+nombreMicro);
+        int i;
+        int[] numerosPin = new int[ContadorPines];
+        for(i=0;i<ContadorPines;i++){
+            numerosPin[i] = pines[i].getNumero();
+            System.out.print((i+1)+".- PIN "+pines[i].getNumero());
+            if("INPUT".equals(pines[i].getModo()) || "OUTPUT".equals(pines[i].getModo())){
+                System.out.print("(configurado como "+pines[i].getModo()+"): ");
+            } else {
+                System.out.print("(no configurado): ");
+            }
+            if(pines[i].getComponente()==null){
+                System.out.println("No conectado.");
+            }else{
+                System.out.println("Conectado a un "+pines[i].getComponente().getNombre()+" (de tipo "+pines[i].getComponente().getTipo()+").");
+            }
+        }   
+    }
+    //Constructor
+    public Microcontrolador(String name){
+        this.nombreMicro=name;
+        estaEncendido = false;
+        pines = new Pin[100];
+    }
+    //Geters
+    public String getNombreMicro(){
+        return nombreMicro;
+    }
+    public boolean getEstaEncendido(){
+        return estaEncendido;
+    }
+    public Pin[] getPines(){
+        return pines;
+    }
+}
