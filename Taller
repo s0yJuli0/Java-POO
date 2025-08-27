@@ -1,0 +1,45 @@
+/*Clase "Taller"*/
+
+package control_sistem_of_robotic_workshop;
+/**
+ *
+ * @author LENOVO
+ */
+public class Taller {
+    //Atributos
+    int ContadorMicrocontroladores;    
+    private final String nombreTaller;
+    private final Microcontrolador microcontroladores[100];
+    //Métodos
+    void agregarMicrocontrolador(Microcontrolador m){
+        //añadir un microcontrolador
+        microcontroladores[ContadorMicrocontroladores]=m;
+        ContadorMicrocontroladores++;
+    }
+    void listarMicrocontroladores(){
+        //Imprimir info de cada Microcontrolador
+        System.out.println("Lista de microcontroladores del taller: "+nombreTaller);
+        int i;
+        for(i=0;i<ContadorMicrocontroladores;i++){
+            System.out.print((i+1)+".- "+microcontroladores[i].getNombreMicro()+": ");
+            if(microcontroladores[i].getEstaEncendido()==true){
+                System.out.println("Encendido.");
+            }else{
+                System.out.println("Apagado.");
+            }
+        }
+    }
+    //Constructor
+    public Taller(String nombreTaller){
+        this.nombreTaller=nombreTaller;
+        microcontroladores = new Microcontrolador[100];
+        ContadorMicrocontroladores=0;
+    }
+    //Getters
+    public String getNombreTaller(){
+        return nombreTaller;
+    }
+    public Microcontrolador[] getMicrocontroladores(){
+        return microcontroladores;
+    }
+}
