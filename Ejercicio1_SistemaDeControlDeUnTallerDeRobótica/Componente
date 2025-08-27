@@ -1,0 +1,25 @@
+/* Clase "Componente" */
+
+package control_sistem_of_robotic_workshop;
+
+/**
+ *
+ * @author LENOVO
+ */
+public class Componente {
+    //Atributos
+    private String nombre;
+    private String tipo;
+    //Constructor
+    public Componente(String nombre, String tipo){
+        this.nombre = nombre;
+        this.tipo = tipo;
+    }
+    //Geters
+    public String getNombre(){
+        return nombre;
+    }
+    public String getTipo(){
+        return tipo;
+    }
+}
