@@ -1,0 +1,12 @@
+# Ejercicio 1: Sistema de control de un taller de Robótica
+En la clase "Control_Sistem_Of_Robotic_Workship" (la principal)
+se simula un Taller de Robótica (T1), el cual tiene varios Microcontroladores
+(M1 y M2), a estos se le asocian Pines (P1, P2 y P3), y a  estos se les "conectan"
+Componentes (L1, S1 y SM1).
+Además de la clase principal, tenemos otras cuatro clases que ya fueron mencionadas:
+- Taller
+- Microcontrolador
+- Pin
+- Componente
+Las cuales simulan cada uno de estos componentes de este sistema.
+En la descripción de cada archivo se detalla mejor cada clase.
