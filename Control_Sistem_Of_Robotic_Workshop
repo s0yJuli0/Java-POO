@@ -1,0 +1,56 @@
+/*Clase "Control_Sistem_Of_Robotic_Workshop" (principal)*/
+
+package control_sistem_of_robotic_workshop;
+/**
+ *
+ * @author LENOVO
+ */
+public class Control_Sistem_Of_Robotic_Workshop {
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        // Creando Taller
+        Taller T1 = new Taller("Talleres El Gordis");
+        //Mostrando nombre del taller
+        System.out.println("Taller: "+T1.getNombreTaller());
+        //Creando Microcontroladores
+        Microcontrolador M1 = new Microcontrolador("ESP32");
+        Microcontrolador M2 = new Microcontrolador("Arduino Nano");
+        //Agregando Microcontroladores al Taller
+        T1.agregarMicrocontrolador(M1);
+        T1.agregarMicrocontrolador(M2);
+        //Creando 3 Pines
+        Pin P1 = new Pin(2,M1.getNombreMicro()); //Para el ESP32
+        Pin P2 = new Pin(13, M1.getNombreMicro()); //Para el ESP32
+        Pin P3 = new Pin(14, M2.getNombreMicro()); //Para el Arduino Nano
+        //Agregando dichos pines a los Microcontroladores
+        M1.agregarPin(P1);
+        M1.agregarPin(P2);
+        M2.agregarPin(P3);
+        //Creando Componentes
+        Componente L1 = new Componente("LED", "actuador");
+        Componente S1 = new Componente("Sensor de luz", "sensor");
+        Componente SM1 = new Componente("Servomotor", "actuador");
+        //Configurando Pines
+        P1.pinMode("error");
+        P1.pinMode("OUTPUT");
+        P2.pinMode("INPUT");
+        P3.pinMode("hola");
+        P3.pinMode("OUTPUT");
+        //Conectando Componentes a los Pines
+        P1.conectarComponente(L1);
+        P2.conectarComponente(S1);
+        P3.conectarComponente(SM1);
+        //Jugando con los Microcontroladores
+        M1.encender();
+        M2.encender();
+        T1.listarMicrocontroladores();
+        M2.apagar();
+        T1.listarMicrocontroladores();
+        M2.encender();
+        //Jugando con los Pines
+        M1.mostrarEstadoPines();
+        M2.mostrarEstadoPines();
+    }
+}
